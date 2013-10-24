@@ -1,0 +1,212 @@
+==13833== Memcheck, a memory error detector
+==13833== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==13833== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==13833== Command: ./vegnews
+==13833== 
+Starting an inner block.
+1: "Celery Stalks at Midnight" object created
+2: "Lettuce Prey" object created
+3: "Spinach Leaves Bowl for Dollars" object created
+headline1: Celery Stalks at Midnight
+headline2: Lettuce Prey
+sports: Spinach Leaves Bowl for Dollars
+String passed by reference:
+    "Celery Stalks at Midnight"
+headline1: Celery Stalks at Midnight
+==13833== Invalid read of size 1
+==13833==    at 0x402C658: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048965: main (vegnews.cpp:27)
+==13833==  Address 0x4325078 is 0 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C663: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048965: main (vegnews.cpp:27)
+==13833==  Address 0x4325079 is 1 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x41BE6C8: _IO_file_xsputn@@GLIBC_2.1 (fileops.c:1362)
+==13833==    by 0x41B37F7: fwrite (iofwrite.c:45)
+==13833==    by 0x40CD075: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CE9AA: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CEC3D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048965: main (vegnews.cpp:27)
+==13833==  Address 0x4325078 is 0 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x41BE6D4: _IO_file_xsputn@@GLIBC_2.1 (fileops.c:1361)
+==13833==    by 0x41B37F7: fwrite (iofwrite.c:45)
+==13833==    by 0x40CD075: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CE9AA: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CEC3D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048965: main (vegnews.cpp:27)
+==13833==  Address 0x432507a is 2 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+String passed by value:
+    "Lettuce Prey"
+"Lettuce Prey" object deleted, 2 left
+headline2: Lettuce Prey
+Initialize one object to another:
+sailor: Spinach Leaves Bowl for Dollars
+Assign one object to another:
+3: "C++" object created
+knot: Celery Stalks at Midnight
+==13833== Invalid read of size 1
+==13833==    at 0x402C658: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250b8 is 0 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C663: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250b9 is 1 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x41CC0B5: __GI_mempcpy (mempcpy.S:56)
+==13833==    by 0x41BE769: _IO_file_xsputn@@GLIBC_2.1 (fileops.c:1350)
+==13833==    by 0x41B37F7: fwrite (iofwrite.c:45)
+==13833==    by 0x40CD075: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CE9AA: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CEC3D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250b8 is 0 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 2
+==13833==    at 0x41CC0BA: __GI_mempcpy (mempcpy.S:59)
+==13833==    by 0x41BE769: _IO_file_xsputn@@GLIBC_2.1 (fileops.c:1350)
+==13833==    by 0x41B37F7: fwrite (iofwrite.c:45)
+==13833==    by 0x40CD075: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CE9AA: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CEC3D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250b9 is 1 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 4
+==13833==    at 0x41CC0BC: __GI_mempcpy (mempcpy.S:60)
+==13833==    by 0x41BE769: _IO_file_xsputn@@GLIBC_2.1 (fileops.c:1350)
+==13833==    by 0x41B37F7: fwrite (iofwrite.c:45)
+==13833==    by 0x40CD075: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CE9AA: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, int) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x40CEC3D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250bb is 3 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid free() / delete / delete[] / realloc()
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A69: main (vegnews.cpp:36)
+==13833==  Address 0x43250b8 is 0 bytes inside a block of size 32 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A5D: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C658: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A75: main (vegnews.cpp:36)
+==13833==  Address 0x4325078 is 0 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C663: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A75: main (vegnews.cpp:36)
+==13833==  Address 0x4325079 is 1 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid free() / delete / delete[] / realloc()
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A75: main (vegnews.cpp:36)
+==13833==  Address 0x4325078 is 0 bytes inside a block of size 13 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048941: main (vegnews.cpp:26)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C658: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A81: main (vegnews.cpp:36)
+==13833==  Address 0x4325028 is 0 bytes inside a block of size 26 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A51: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid read of size 1
+==13833==    at 0x402C663: strlen (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x40CEC2D: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/i386-linux-gnu/libstdc++.so.6.0.16)
+==13833==    by 0x8048A81: main (vegnews.cpp:36)
+==13833==  Address 0x4325029 is 1 bytes inside a block of size 26 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A51: main (vegnews.cpp:36)
+==13833== 
+==13833== Invalid free() / delete / delete[] / realloc()
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A81: main (vegnews.cpp:36)
+==13833==  Address 0x4325028 is 0 bytes inside a block of size 26 free'd
+==13833==    at 0x402A8DC: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048DAF: StringBad::~StringBad() (stringbad.cpp:41)
+==13833==    by 0x8048A51: main (vegnews.cpp:36)
+==13833== 
+Exiting the block.
+"Celery Stalks at Midnight" object deleted, 2 left
+"Spinach Leaves Bowl for Dollars" object deleted, 1 left
+"Spinach Leaves Bowl for Dollars" object deleted, 0 left
+"Lettuce Prey" object deleted, -1 left
+"Celery Stalks at Midnight" object deleted, -2 left
+End of main()!
+==13833== 
+==13833== HEAP SUMMARY:
+==13833==     in use at exit: 4 bytes in 1 blocks
+==13833==   total heap usage: 4 allocs, 6 frees, 75 bytes allocated
+==13833== 
+==13833== 4 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==13833==    at 0x402B454: operator new[](unsigned int) (in /usr/lib/valgrind/vgpreload_memcheck-x86-linux.so)
+==13833==    by 0x8048CC0: StringBad::StringBad() (stringbad.cpp:28)
+==13833==    by 0x80489ED: main (vegnews.cpp:33)
+==13833== 
+==13833== LEAK SUMMARY:
+==13833==    definitely lost: 4 bytes in 1 blocks
+==13833==    indirectly lost: 0 bytes in 0 blocks
+==13833==      possibly lost: 0 bytes in 0 blocks
+==13833==    still reachable: 0 bytes in 0 blocks
+==13833==         suppressed: 0 bytes in 0 blocks
+==13833== 
+==13833== For counts of detected and suppressed errors, rerun with: -v
+==13833== ERROR SUMMARY: 128 errors from 17 contexts (suppressed: 0 from 0)

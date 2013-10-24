@@ -1,0 +1,7 @@
+Focal length of objective: 45 mm
+f.t. eyepiece  magnification
+        23.0              2
+        13.0              3
+        14.0              3
+        26.0              2
+        30.0              2
