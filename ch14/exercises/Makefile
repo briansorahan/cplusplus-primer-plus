@@ -1,12 +1,13 @@
 .PHONY: all clean
 
 CPPFLAGS := -std=c++0x
-BINARIES := ex1 ex3
+BINARIES := ex1 ex3 ex4
 
 all: $(BINARIES)
 
 ex1: ex1.cpp wine.cpp
 ex3: ex3.cpp worker.cpp
+ex4: ex4.cpp person.hpp queue.hpp
 
 clean:
 	-rm *~ $(BINARIES) *.o

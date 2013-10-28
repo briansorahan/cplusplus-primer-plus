@@ -1,12 +1,11 @@
 #include <iostream>
+#include <string>
 #include <cstring>
 
 #include "queue.hpp"
-#include "worker.hpp"
+#include "person.hpp"
 
-const int SIZE = 5;
-
-template class Queue<Worker *>;
+const int SIZE = 10;
 
 int main(int argc, char **argv) {
     using std::cin;
@@ -14,18 +13,32 @@ int main(int argc, char **argv) {
     using std::endl;
     using std::strchr;
 
-    Queue<Worker *> lolas(SIZE);
+    Queue<Person *> outlaws(SIZE);
 
     int ct;
-    Worker * w;
+
+    // gunslinger fields
+    int notches;
+    double drawtime;
+
+    char choice;
+    string firstname, lastname;
+    Person * p;
+
     for (ct = 0; ct < SIZE; ct++) {
-        char choice;
-        cout << "Enter the employee category:\n"
-             << "w: waiter    s: singer    "
-             << "t: singing waiter    q: quit\n";
+        cout << "Enter the first name: ";
+        getline(cin, firstname);
+        cout << "Enter the last name: ";
+        getline(cin, lastname);
+
+        p = new Person(firstname, lastname);
+
+        cout << "Enter the person category:\n"
+             << "g: gunslinger    p: poker player    "
+             << "b: bad dude    q: quit\n";
         cin >> choice;
-        while (strchr("wstq", choice) == NULL) {
-            cout << "Please enter a w, s, t, or q: ";
+        while (strchr("gpbq", choice) == NULL) {
+            cout << "Please enter g, p, b, or q: ";
             cin >> choice;
         }
 
@@ -34,32 +47,41 @@ int main(int argc, char **argv) {
         }
 
         switch (choice) {
-        case 'w':
-            w = new Waiter;
+        case 'g':
+            cout << "Enter draw time: ";
+            cin >> drawtime;
+            cout << "Enter number of notches on the gunslinger's gun: ";
+            cin >> notches;
+
+            p = new Gunslinger(*p, drawtime, notches);
             break;
-        case 's':
-            w = new Singer;
+        case 'p':
+            p = new PokerPlayer(*p);
             break;
-        case 't':
-            w = new SingingWaiter;
+        case 'b':
+            cout << "Enter draw time: ";
+            cin >> drawtime;
+            cout << "Enter number of notches on the gunslinger's gun: ";
+            cin >> notches;
+
+            p = new BadDude(*p, drawtime, notches);
             break;
         }
 
         cin.get();
-        w->Set();
-        lolas.enqueue(w);
+        outlaws.enqueue(p);
     }
 
-    cout << "\nHere is your staff:\n";
+    cout << "\nHere are the outlaws:\n";
     int i;
     for (i = 0; i < ct; i++) {
-        lolas.dequeue(w);
+        outlaws.dequeue(p);
         cout << endl;
-        w->Show();
+        p->Show();
     }
 
-    cout << "Bye.\n";
+    cout << "\nBye.\n";
 
-    delete w;
+    // delete p;
     return 0;
 }
