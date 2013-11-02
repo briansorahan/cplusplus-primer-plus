@@ -3,7 +3,9 @@
 #ifndef TV_HPP
 #define TV_HPP
 
-class TV {
+#include <iostream>
+
+class Tv {
 public:
     friend class Remote;
     enum { Off, On };
@@ -11,7 +13,7 @@ public:
     enum { Antenna, Cable };
     enum { TV, DVD };
 
-    TV(int s, Off, int mc = 125)
+    Tv(int s = Off, int mc = 125)
         : state(s), volume(5), maxchannel(mc), channel(2), mode(Cable), input(TV) {}
     void onoff() { state = (state == On) ? Off : On; }
     bool ison() const { return state == On; }
@@ -35,15 +37,15 @@ class Remote {
 private:
     int mode;
 public:
-    Remote(int m = TV::TV) : mode(m) {}
-    bool volup(TV & t) { return t.volup(); }
-    bool voldown(TV & t) { return t.voldown(); }
-    void onoff(TV & t) { t.onoff(); }
-    void chanup(TV & t) { t.chanup(); }
-    void chandown(TV & t) { t.chandown(); }
-    void set_chan(TV & t, int c) { t.channel = c; }
-    void set_mode(TV & t) { t.set_mode(); }
-    void set_input(TV & t) { t.set_input(); }
+    Remote(int m = Tv::TV) : mode(m) {}
+    bool volup(Tv & t) { return t.volup(); }
+    bool voldown(Tv & t) { return t.voldown(); }
+    void onoff(Tv & t) { t.onoff(); }
+    void chanup(Tv & t) { t.chanup(); }
+    void chandown(Tv & t) { t.chandown(); }
+    void set_chan(Tv & t, int c) { t.channel = c; }
+    void set_mode(Tv & t) { t.set_mode(); }
+    void set_input(Tv & t) { t.set_input(); }
 };
 
 #endif
