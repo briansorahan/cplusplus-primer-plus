@@ -1,6 +1,6 @@
 // using the TV and Remote classes
 
-#include "tv.hpp"
+#include "tvfm.hpp"
 
 #include <iostream>
 
