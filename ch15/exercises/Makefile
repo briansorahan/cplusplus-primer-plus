@@ -1,8 +1,10 @@
 .PHONY: all clean
 
-BINARIES := use-tv
+BINARIES := ex1 ex2
 
-use-tv: use-tv.cpp tv.cpp
+all: $(BINARIES)
+
+ex1: ex1.cpp tv.cpp
 
 clean:
 	-rm $(BINARIES) *~ *.o
