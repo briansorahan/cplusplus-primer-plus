@@ -1,8 +1,13 @@
+CHAPTERS := $(wildcard ch*)
+
 .PHONY: all clean
 
-BINARIES := carrots convert getinfo myfirst ourfunc sqrt
-
-all: $(BINARIES)
+all:
+	for d in $(CHAPTERS); do \
+		$(MAKE) -C $$d; \
+	done
 
 clean:
-	-rm $(BINARIES) *~ *.o
+	for d in $(CHAPTERS); do \
+		$(MAKE) -C $$d clean; \
+	done
