@@ -1,6 +1,6 @@
 // file1.cpp -- example of a three-file program
 #include<iostream>
-#include "coordin.h"
+#include "coordin.hpp"
 using namespace std;
 int main() {
   rect rplace;

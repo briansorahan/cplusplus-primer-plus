@@ -2,7 +2,7 @@
 // Brian Sorahan
 
 #include<iostream>
-#include "golf.h"
+#include "golf.hpp"
 
 int main() {
   using std::cout;

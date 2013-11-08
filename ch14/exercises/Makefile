@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 CPPFLAGS := -std=c++0x
-BINARIES := ex1 ex3 ex4 ex5
+BINARIES := ex1 ex3 ex4 # I am excluding ex5 because MI is evil
 
 all: $(BINARIES)
 

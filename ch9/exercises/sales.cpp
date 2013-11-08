@@ -1,7 +1,7 @@
 // sales.cpp -- function definitions for Sales
 
 #include<iostream>
-#include "sales.h"
+#include "sales.hpp"
 
 namespace sales {
   // copies the lesser of 4 or n items from the

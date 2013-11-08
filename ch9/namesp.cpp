@@ -1,7 +1,7 @@
 // namesp.cpp -- namespaces
 
 #include<iostream>
-#include "namesp.h"
+#include "namesp.hpp"
 
 namespace pers {
   using std::cout;

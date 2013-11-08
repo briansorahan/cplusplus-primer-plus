@@ -2,7 +2,7 @@
 // Brian Sorahan
 
 #include<iostream>
-#include "sales.h"
+#include "sales.hpp"
 
 int main() {
   using namespace sales;

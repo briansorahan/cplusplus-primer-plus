@@ -1,8 +1,7 @@
 // usestock01.cpp -- the client program
-// compile with stock01.cpp
 
 #include <iostream>
-#include "stock01.h"
+#include "stock01.hpp"
 
 int main() {
   using std::cout;

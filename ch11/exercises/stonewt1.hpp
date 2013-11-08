@@ -3,6 +3,8 @@
 #ifndef STONEWT_H_
 #define STONEWT_H_
 
+#include <iostream>
+
 namespace stonewt {
   enum State { STONE, INT_LBS, FLOAT_LBS };
 

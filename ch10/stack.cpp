@@ -1,6 +1,6 @@
 // stack.cpp -- implementation for the stack ADT
 
-#include "stack.h"
+#include "stack.hpp"
 
 Stack::Stack() {
   top = 0;

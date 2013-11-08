@@ -3,7 +3,7 @@
 
 #include<iostream>
 #include<cstring>
-#include "golf.h"
+#include "golf.hpp"
 
 // non-interactive version
 // function sets golf structure to provided name, handicap

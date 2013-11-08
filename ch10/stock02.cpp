@@ -2,7 +2,7 @@
 // version 02
 
 #include <iostream>
-#include "stock02.h"
+#include "stock02.hpp"
 
 // default constructor
 Stock::Stock() {

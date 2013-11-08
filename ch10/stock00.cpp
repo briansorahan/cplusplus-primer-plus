@@ -2,7 +2,7 @@
 // version 00
 
 #include <iostream>
-#include "stock00.h"
+#include "stock00.hpp"
 
 void Stock::acquire(const std::string& co, long n, double pr) {
   company = co;

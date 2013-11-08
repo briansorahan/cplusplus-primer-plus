@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <cctype>
-#include "stack.h"
+#include "stack.hpp"
 
 int main() {
   using namespace std;

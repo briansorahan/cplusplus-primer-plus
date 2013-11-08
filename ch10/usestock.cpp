@@ -2,7 +2,7 @@
 // compile with stock00.cpp
 
 #include <iostream>
-#include "stock00.h"
+#include "stock00.hpp"
 
 int main() {
   Stock fluffy_the_cat;

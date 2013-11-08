@@ -8,6 +8,7 @@ void update(double dt);
 void local();
 
 using std::cout;
+
 void update(double dt) {
   extern double warming; // optional redeclaration
   warming += dt; // uses global warming
