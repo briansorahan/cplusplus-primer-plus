@@ -1,6 +1,8 @@
 .PHONY: all clean
 
-BINARIES := str1 strfile
+CXXFLAGS := -std=c++0x
+
+BINARIES := str1 strfile hangman str2 smartpointers fowl
 
 all: $(BINARIES)
 
