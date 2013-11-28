@@ -1,4 +1,5 @@
-// Palindromes
+// Palindromes (ignoring capitalization)
+
 #include <iostream>
 #include <string>
 
