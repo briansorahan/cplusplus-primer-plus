@@ -2,9 +2,11 @@
 
 CXXFLAGS := -std=c++0x
 
-BINARIES := ex1 ex2 ex3 ex4 ex5
+BINARIES := ex1 ex2 ex3 ex4 ex5 ex6
 
 all: $(BINARIES)
 
 clean:
 	-rm $(BINARIES) *.o *~
+
+ex6: customer.cpp
