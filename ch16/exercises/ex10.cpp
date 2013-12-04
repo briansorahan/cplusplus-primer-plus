@@ -3,46 +3,63 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <memory>
+
+using std::shared_ptr;
 
 struct Review {
     std::string title;
     int rating;
+    double price;
 };
 
-bool operator>(const Review & r1, const Review & r2);
-bool worseThan(const Review & r1, const Review & r2);
-bool FillReview(Review & rr);
-void ShowReview(const Review & rr);
+bool operator>(const shared_ptr< Review > r1, const shared_ptr< Review > r2);
+bool worseThan(const shared_ptr< Review > r1, const shared_ptr< Review > r2);
+bool cheaperThan(const shared_ptr< Review > r1, const shared_ptr< Review > r2);
+bool FillReview(shared_ptr< Review > & rr);
+void ShowReview(const shared_ptr< Review > & rr);
 
 int main(int argc, char ** argv) {
     using namespace std;
 
-    vector<Review> books;
-    Review temp;
+    vector< shared_ptr< Review > > books;
+    shared_ptr< Review > temp;
 
     while (FillReview(temp)) {
         books.push_back(temp);
     }
 
     if (books.size() > 0) {
-        cout << "Thank you. You entered the following "
-             << books.size() << " ratings:\n"
-             << "Rating\t\tBook\n";
+        // cout << "Thank you. You entered the following "
+        //      << books.size() << " ratings:\n"
+        //      << "Rating\t\tBook\n";
 
-        // for_each(books.begin(), books.end(), ShowReview);
-        for (Review b : books) ShowReview(b);
+        // // for_each(books.begin(), books.end(), ShowReview);
+        // for (shared_ptr< Review > b : books) {
+        //     ShowReview(b);
+        // }
 
-        sort(books.begin(), books.end());
-        cout << "Sorted by title:\nRating\t\tBook\n";
-        for_each(books.begin(), books.end(), ShowReview);
+        string choice;
+        cout << "Enter display ordering (t=title, r=review, p=price, q to quit): ";
+        while((cin >> choice) && (choice != "q")) {
+            if (choice == "t") {
+                sort(books.begin(), books.end());
+                cout << "Sorted by title:\nRating\t\tBook\t\tPrice\n";
+                for_each(books.begin(), books.end(), ShowReview);
+            } else if (choice == "r") {
+                sort(books.begin(), books.end(), worseThan);
+                cout << "Sorted by rating:\nRating\t\tBook\t\tPrice\n";
+                for_each(books.begin(), books.end(), ShowReview);
+            } else if (choice == "p") {
+                sort(books.begin(), books.end(), cheaperThan);
+                cout << "Sorted by price:\nRating\t\tBook\t\tPrice\n";
+                for_each(books.begin(), books.end(), ShowReview);
+            } else {
+                cout << "Invalid choice: " << choice << endl;
+            }
 
-        sort(books.begin(), books.end(), worseThan);
-        cout << "Sorted by rating:\nRating\t\tBook\n";
-        for_each(books.begin(), books.end(), ShowReview);
-
-        random_shuffle(books.begin(), books.end());
-        cout << "After shuffling:\nRating\t\tBook\n";
-        for_each(books.begin(), books.end(), ShowReview);
+            cout << "Enter display ordering (t=title, r=review, p=price, q to quit): ";
+        }
     } else {
         cout << "No entries\n";
     }
@@ -50,28 +67,41 @@ int main(int argc, char ** argv) {
     return 0;
 }
 
-bool operator<(const Review & r1, const Review & r2) {
-    return (r1.title < r2.title) || ((r1.title == r2.title) && (r2.rating < r2.rating));
+bool operator<(const shared_ptr< Review > r1, const shared_ptr< Review > r2) {
+    return (r1->title < r2->title) || ((r1->title == r2->title) && (r2->rating < r2->rating));
 }
 
-bool worseThan(const Review & r1, const Review & r2) {
-    return r1.rating < r2.rating;
+bool worseThan(const shared_ptr< Review > r1, const shared_ptr< Review > r2) {
+    return r1->rating < r2->rating;
 }
 
-bool FillReview(Review & rr) {
+bool cheaperThan(const shared_ptr< Review > r1, const shared_ptr< Review > r2) {
+    return r1->price < r2->price;
+}
+
+bool FillReview(shared_ptr< Review > & rr) {
     using std::cout;
     using std::cin;
     using std::getline;
 
-    cout << "Enter book title (quit to quit): ";
-    getline(cin, rr.title);
+    rr = shared_ptr< Review >(new Review);
 
-    if (rr.title == "quit") {
+    cout << "Enter book title (quit to quit): ";
+    getline(cin, rr->title);
+
+    if (rr->title == "quit") {
         return false;
     }
 
     cout << "Enter book rating: ";
-    cin >> rr.rating;
+    cin >> rr->rating;
+
+    if (! cin) {
+        return false;
+    }
+
+    cout << "Enter book price: ";
+    cin >> rr->price;
 
     if (! cin) {
         return false;
@@ -84,7 +114,9 @@ bool FillReview(Review & rr) {
     return true;
 }
 
-void ShowReview(const Review & rr) {
-    std::cout << rr.rating << "\t\t" << rr.title << std::endl;
+void ShowReview(const shared_ptr< Review > & rr) {
+    std::cout << rr->rating
+              << "\t\t" << rr->title
+              << "\t\t" << rr->price << std::endl;
 }
 
