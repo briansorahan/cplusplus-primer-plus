@@ -30,17 +30,8 @@ int main(int argc, char ** argv) {
     }
 
     if (books.size() > 0) {
-        // cout << "Thank you. You entered the following "
-        //      << books.size() << " ratings:\n"
-        //      << "Rating\t\tBook\n";
-
-        // // for_each(books.begin(), books.end(), ShowReview);
-        // for (shared_ptr< Review > b : books) {
-        //     ShowReview(b);
-        // }
-
         string choice;
-        cout << "Enter display ordering (t=title, r=review, p=price, q to quit): ";
+        cout << "Enter display ordering (t=title, r=review, pi=price(increasing) pd=price(decreasing), q to quit): ";
         while((cin >> choice) && (choice != "q")) {
             if (choice == "t") {
                 sort(books.begin(), books.end());
@@ -50,15 +41,19 @@ int main(int argc, char ** argv) {
                 sort(books.begin(), books.end(), worseThan);
                 cout << "Sorted by rating:\nRating\t\tBook\t\tPrice\n";
                 for_each(books.begin(), books.end(), ShowReview);
-            } else if (choice == "p") {
+            } else if (choice == "pi") {
                 sort(books.begin(), books.end(), cheaperThan);
                 cout << "Sorted by price:\nRating\t\tBook\t\tPrice\n";
                 for_each(books.begin(), books.end(), ShowReview);
+            } else if (choice == "pd") {
+                sort(books.begin(), books.end(), cheaperThan);
+                cout << "Sorted by price:\nRating\t\tBook\t\tPrice\n";
+                for_each(books.rbegin(), books.rend(), ShowReview);
             } else {
                 cout << "Invalid choice: " << choice << endl;
             }
 
-            cout << "Enter display ordering (t=title, r=review, p=price, q to quit): ";
+            cout << "Enter display ordering (t=title, r=review, pi=price(increasing) pd=price(decreasing), q to quit): ";
         }
     } else {
         cout << "No entries\n";
@@ -86,10 +81,10 @@ bool FillReview(shared_ptr< Review > & rr) {
 
     rr = shared_ptr< Review >(new Review);
 
-    cout << "Enter book title (quit to quit): ";
+    cout << "Enter book title (q to quit): ";
     getline(cin, rr->title);
 
-    if (rr->title == "quit") {
+    if (rr->title == "q") {
         return false;
     }
 
