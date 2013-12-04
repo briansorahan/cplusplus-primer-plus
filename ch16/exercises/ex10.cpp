@@ -31,16 +31,20 @@ int main(int argc, char ** argv) {
 
     if (books.size() > 0) {
         string choice;
-        cout << "Enter display ordering (t=title, r=review, pi=price(increasing) pd=price(decreasing), q to quit): ";
+        cout << "Enter display ordering (t=title, ri=rating(increasing), rd=rating(decreasing), pi=price(increasing) pd=price(decreasing), q to quit): ";
         while((cin >> choice) && (choice != "q")) {
             if (choice == "t") {
                 sort(books.begin(), books.end());
                 cout << "Sorted by title:\nRating\t\tBook\t\tPrice\n";
                 for_each(books.begin(), books.end(), ShowReview);
-            } else if (choice == "r") {
+            } else if (choice == "ri") {
                 sort(books.begin(), books.end(), worseThan);
                 cout << "Sorted by rating:\nRating\t\tBook\t\tPrice\n";
                 for_each(books.begin(), books.end(), ShowReview);
+            } else if (choice == "rd") {
+                sort(books.begin(), books.end(), worseThan);
+                cout << "Sorted by rating:\nRating\t\tBook\t\tPrice\n";
+                for_each(books.rbegin(), books.rend(), ShowReview);
             } else if (choice == "pi") {
                 sort(books.begin(), books.end(), cheaperThan);
                 cout << "Sorted by price:\nRating\t\tBook\t\tPrice\n";
@@ -53,7 +57,7 @@ int main(int argc, char ** argv) {
                 cout << "Invalid choice: " << choice << endl;
             }
 
-            cout << "Enter display ordering (t=title, r=review, pi=price(increasing) pd=price(decreasing), q to quit): ";
+            cout << "Enter display ordering (t=title, ri=rating(increasing), rd=rating(decreasing), pi=price(increasing) pd=price(decreasing), q to quit): ";
         }
     } else {
         cout << "No entries\n";
