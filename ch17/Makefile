@@ -2,7 +2,8 @@
 
 CXXFLAGS := -std=c++0x
 
-BINARIES := get_fun peeker
+BINARIES := write defaults manip width fill precise showpt setf \
+            get_fun peeker
 
 all: $(BINARIES)
 
