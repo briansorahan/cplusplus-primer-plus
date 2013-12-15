@@ -4,16 +4,24 @@
 #include <cstdlib>
 #include <string>
 
-int main(int argc, const char ** const argv) {
+void exit_with_usage(void);
+
+int main(int argc, char ** argv) {
     using namespace std;
 
     static const int LIMIT = 4096;
-    static const char * file = "capture";
-
+    char * filename;
     char ch[LIMIT];
-    ofstream fout(file);
+
+    if (argc < 2) {
+        exit_with_usage();
+    } else {
+        filename = argv[1];
+    }
+
+    ofstream fout(filename);
     if (! fout.is_open()) {
-        cerr << "Could not open " << file << endl;
+        cerr << "Could not open " << filename << endl;
         exit(EXIT_FAILURE);
     }
     while (cin.get(&ch[0], LIMIT, '#')) {
@@ -21,4 +29,9 @@ int main(int argc, const char ** const argv) {
     }
     fout.close();
     return 0;
+}
+
+void exit_with_usage(void) {
+    std::cerr << "Usage: ./ex2 filename\n";
+    exit(255);
 }

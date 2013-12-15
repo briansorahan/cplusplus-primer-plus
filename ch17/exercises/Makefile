@@ -2,7 +2,6 @@
 
 CXXFLAGS := -std=c++0x
 
-DATA := capture
 BIN := ex1 ex2
 
 all .DEFAULT: $(BIN)
