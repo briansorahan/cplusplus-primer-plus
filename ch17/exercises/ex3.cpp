@@ -43,6 +43,6 @@ int main(int argc, char ** argv) {
 
 void exit_with_usage(void) {
     std::cerr << "Copy one file to another.\n"
-              << "Usage: ./ex2 from to\n";
+              << "Usage: ./ex3 from to\n";
     exit(255);
 }
