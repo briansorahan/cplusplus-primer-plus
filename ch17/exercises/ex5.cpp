@@ -1,19 +1,22 @@
 // Mat and Pat
-#include <iostream>
-#include <string>
-#include <list>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <list>
+#include <string>
 
 void Show(std::string s);
 
 int main(int argc, char ** argv) {
     using namespace std;
 
+    ifstream matin("mat.dat");
+    ifstream patin("pat.dat");
+    ofstream fout("matnpat.dat");
     list<string> mat, pat;
     string temp;
 
-    cout << "Enter Mat's friends (q to quit):\n";
-    while ((cin >> temp) && temp != "q") {
+    while (getline(matin, temp)) {
         mat.push_back(temp);
     }
     mat.sort();
@@ -21,8 +24,7 @@ int main(int argc, char ** argv) {
     for_each(mat.begin(), mat.end(), Show);
     cout << endl;
 
-    cout << "Enter Pat's friends (q to quit):\n";
-    while ((cin >> temp) && temp != "q") {
+    while (getline(patin, temp)) {
         pat.push_back(temp);
     }
     pat.sort();
@@ -37,6 +39,9 @@ int main(int argc, char ** argv) {
     for_each(merged.begin(), merged.end(), Show);
     cout << endl;
 
+    matin.close();
+    patin.close();
+    fout.close();
     return 0;
 }
 
