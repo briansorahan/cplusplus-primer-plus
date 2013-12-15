@@ -2,9 +2,10 @@
 
 CXXFLAGS := -std=c++0x
 
-BIN := ex1
+DATA := capture
+BIN := ex1 ex2
 
 all .DEFAULT: $(BIN)
 
 clean:
-	-rm -f $(BIN) *~
+	-rm -f $(DATA) $(BIN) *~
